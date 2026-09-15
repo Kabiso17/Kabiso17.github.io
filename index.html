@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Finance AI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <!-- 樣式寫在 style.css，不放在 svg 裡的 <style>：在 HTML（不是 XML）裡，
+             SVG 的 style 元素不會被限制在那個 svg 內，規則會套到整份文件。
+             現在沒撞到東西是運氣，不是設計。 -->
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <line x1="3" y1="18" x2="29" y2="18" />
+          <path d="M4 24 L11 21 L17 12.5 L22.5 15 L28 7" />
+          <circle cx="28" cy="7" r="3" />
+        </svg>
+        <h1>Personal Finance AI</h1>
+      </header>
+
+      <p class="lede">
+        一套自架的個人記帳與財務彙整工具，由一位個人開發並自用。
+        它會讀取<strong>擁有者本人信箱裡的收據與帳單信件</strong>，
+        整理成帳目、資產快照與定期報表。
+      </p>
+
+      <h2>這個應用程式是給誰用的</h2>
+      <p>
+        只有擁有者本人。它<strong>不對外提供服務、不開放註冊、沒有其他使用者</strong>。
+        這個頁面存在的唯一目的，是滿足 Google OAuth 同意畫面對
+        「應用程式首頁、隱私權政策、服務條款」三個公開連結的要求。
+      </p>
+
+      <h2>它會用到哪些 Google 權限</h2>
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>權限範圍</th>
+            <th>用途</th>
+          </tr>
+          <tr>
+            <td><code>gmail.readonly</code></td>
+            <td>讀取符合關鍵字（發票、收據、帳單、對帳單）的信件，從中擷取商家、金額、日期</td>
+          </tr>
+          <tr>
+            <td><code>gmail.send</code></td>
+            <td>把週報、月報與資金簡報寄給擁有者自己</td>
+          </tr>
+          <tr>
+            <td><code>calendar.events</code></td>
+            <td>把繳費期限與待辦建立成行事曆提醒</td>
+          </tr>
+          <tr>
+            <td><code>drive.file</code></td>
+            <td>把彙整後的試算表寫回擁有者自己的雲端硬碟</td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        每一項都只作用在<strong>完成授權的那個帳號自己的資料</strong>上。
+        這個應用程式沒有能力、也沒有任何程式路徑去存取其他人的帳號。
+      </p>
+
+      <h2>資料放在哪裡</h2>
+      <p>
+        擷取出來的帳目存在擁有者自己租用的私人伺服器上（Google Cloud，台灣 asia-east1），
+        資料庫不對外開放任何連接埠，網頁介面也只透過加密通道存取。
+        詳細說明見<a href="privacy.html">隱私權政策</a>。
+      </p>
+
+      <nav>
+        <a href="privacy.html">隱私權政策</a>
+        <a href="terms.html">服務條款</a>
+      </nav>
+    </main>
+  </body>
+</html>

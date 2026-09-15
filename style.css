@@ -1,0 +1,172 @@
+/* 這三頁存在的唯一理由是 Google 的 OAuth 同意畫面要求「應用程式網域」
+   必須有首頁、隱私權政策、服務條款三個公開網址，否則不給把應用程式
+   從「測試」發布成「正式版」——而不發布的話 refresh token 每 7 天過期一次。
+   詳見同目錄的 README.md。
+
+   刻意不用任何外部資源（沒有 Google Fonts、沒有 CDN）：這三頁是給
+   Google 的審查機制與你自己看的，載入速度與可用性比好看重要，
+   而且少一個「某天第三方掛掉就變成空白頁」的失敗點。 */
+
+:root {
+  color-scheme: light dark;
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --border: #e2e5ea;
+  --text: #1f2430;
+  --muted: #6b7280;
+  --accent: #3a5dfb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161a;
+    --surface: #1c1f25;
+    --border: #2e333c;
+    --text: #e6e8ec;
+    --muted: #9aa1ad;
+    --accent: #7a92ff;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans TC", sans-serif;
+  line-height: 1.75;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+/* 系統標誌「淨值線」。跟 web/src/components/BrandMark.vue 是同一個圖，
+   但這裡是獨立站台、拿不到 app 的 token，所以色碼跟 web/public/favicon.svg
+   一樣寫死一次。零線用的是把 text-muted 壓透明後混出來的灰，
+   不是 border（border 疊在底色上只有 1.26:1，等於看不見）。 */
+header svg.mark {
+  width: 32px;
+  height: 32px;
+  flex: none;
+}
+
+header svg.mark line {
+  stroke: #c5cad2;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+header svg.mark path {
+  fill: none;
+  stroke: #3a5dfb;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+header svg.mark circle {
+  fill: #3a5dfb;
+}
+
+@media (prefers-color-scheme: dark) {
+  header svg.mark line {
+    stroke: #464c57;
+  }
+
+  header svg.mark path {
+    stroke: #7a92ff;
+  }
+
+  header svg.mark circle {
+    fill: #7a92ff;
+  }
+}
+
+h1 {
+  font-size: 28px;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 18px;
+  margin: 36px 0 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+p,
+li {
+  color: var(--text);
+}
+
+.lede,
+.updated {
+  color: var(--muted);
+}
+
+.updated {
+  font-size: 14px;
+  margin-top: 0;
+}
+
+a {
+  color: var(--accent);
+}
+
+nav {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 15px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 1px 5px;
+  font-size: 13.5px;
+}
+
+/* 表格在窄螢幕要自己捲，不要把整頁撐寬 */
+.table-wrap {
+  overflow-x: auto;
+}

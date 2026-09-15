@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>隱私權政策 — Personal Finance AI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>隱私權政策</h1>
+      <p class="updated">最後更新：2026 年 9 月 15 日</p>
+
+      <p class="lede">
+        Personal Finance AI（以下稱「本應用程式」）是一套由個人開發、自行架設、
+        <strong>僅供開發者本人使用</strong>的記帳工具。它沒有對外提供服務，
+        沒有開放註冊，除了完成授權的擁有者本人之外沒有其他使用者。
+      </p>
+
+      <h2>一、本應用程式會存取哪些資料</h2>
+      <p>經由 Google OAuth 授權，本應用程式會存取<strong>完成授權的那個帳號本身</strong>的下列資料：</p>
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>權限範圍</th>
+            <th>實際存取的內容與目的</th>
+          </tr>
+          <tr>
+            <td><code>gmail.readonly</code></td>
+            <td>
+              以關鍵字查詢（發票、收據、帳單、對帳單、receipt、invoice）篩選出的信件，
+              讀取其寄件者、主旨與內文，用來擷取商家名稱、金額、日期與付款方式。
+              <strong>不符合查詢條件的信件不會被讀取。</strong>
+            </td>
+          </tr>
+          <tr>
+            <td><code>gmail.send</code></td>
+            <td>寄送週報、月報與每日資金簡報。收件者一律是擁有者本人。</td>
+          </tr>
+          <tr>
+            <td><code>calendar.events</code></td>
+            <td>把繳費期限、會議與待辦建立成行事曆事項。只新增本應用程式自己建立的事項。</td>
+          </tr>
+          <tr>
+            <td><code>drive.file</code></td>
+            <td>
+              把彙整後的試算表寫入雲端硬碟。此範圍<strong>只能存取本應用程式自己建立的檔案</strong>，
+              無法讀取雲端硬碟上的其他檔案。
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <h2>二、資料如何被處理</h2>
+      <p>
+        為了把一封信件轉換成一筆結構化的帳目（商家、金額、日期、分類），
+        本應用程式會把<strong>該封信件的主旨與內文片段傳送給大型語言模型服務商處理</strong>。
+        目前使用的服務商為 Anthropic（透過 Google Cloud Vertex AI）與 Google（Gemini）。
+        這是本應用程式唯一會把信件內容送出自有伺服器的情形，在此明確揭露。
+      </p>
+      <p>
+        除此之外，帳目的計算、彙總與報表產生全部在自有伺服器上完成，不經過任何第三方。
+      </p>
+
+      <h2>三、資料存放在哪裡、誰能存取</h2>
+      <ul>
+        <li>
+          擷取出的帳目與彙總資料，存放在開發者自行租用的虛擬主機上
+          （Google Cloud Compute Engine，台灣 asia-east1）。
+        </li>
+        <li>資料庫不對網際網路開放任何連接埠。</li>
+        <li>網頁介面不對外開放，僅能透過加密通道連入。</li>
+        <li>
+          存取權限僅限開發者本人。<strong>沒有其他人、沒有其他組織、沒有任何第三方</strong>
+          能夠取得這些資料。
+        </li>
+      </ul>
+
+      <h2>四、資料保留與刪除</h2>
+      <p>
+        帳目資料會持續保留，因為這正是一套記帳工具的用途——歷史紀錄本身就是它的價值。
+        擁有者可以隨時直接刪除資料庫中的任何紀錄。
+      </p>
+      <p>
+        Google 的存取憑證（OAuth token）存放在伺服器上權限受限的檔案中，
+        撤銷授權後即失效。
+      </p>
+
+      <h2>五、本應用程式不會做的事</h2>
+      <ul>
+        <li>不會把資料販售、出租或提供給任何第三方作行銷或廣告用途。</li>
+        <li>不會將 Google 使用者資料用於訓練或改良任何一般化的人工智慧模型。</li>
+        <li>不會存取授權帳號以外的任何帳號。</li>
+        <li>沒有廣告、沒有追蹤器、沒有分析工具。</li>
+      </ul>
+      <p>
+        本應用程式對 Google 使用者資料的使用，遵循
+        <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener" target="_blank"
+          >Google API 服務使用者資料政策</a
+        >，包含其中的「有限使用」規定。
+      </p>
+
+      <h2>六、如何撤銷授權</h2>
+      <p>
+        隨時可以在
+        <a href="https://myaccount.google.com/permissions" rel="noopener" target="_blank"
+          >Google 帳戶的「第三方應用程式與服務」頁面</a
+        >
+        移除本應用程式的存取權。撤銷之後，本應用程式將無法再讀取任何新的信件。
+      </p>
+
+      <h2>七、聯絡方式</h2>
+      <p>
+        對本政策有任何疑問，請寄到本應用程式在 Google OAuth 同意畫面上所列的
+        「使用者支援電子郵件」。
+      </p>
+
+      <nav>
+        <a href="index.html">首頁</a>
+        <a href="terms.html">服務條款</a>
+      </nav>
+    </main>
+  </body>
+</html>
